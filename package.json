@@ -5,7 +5,8 @@
   "license": "N/A",
   "private": true,
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "jest"
   },
   "dependencies": {
     "contentful": "^7.0.1",
@@ -15,10 +16,10 @@
     "@autolist/eslint-config-autolist": "^0.6.0",
     "@babel/core": "^7.0.0-rc.1",
     "@babel/plugin-proposal-class-properties": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.2",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^8.2.6",
     "babel-jest": "^23.4.2",
-    "babel-preset-env": "^1.7.0",
     "eslint": "^5.4.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.18.0",

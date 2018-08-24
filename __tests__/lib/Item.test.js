@@ -1,7 +1,8 @@
-const contentful = require('contentful');
+require('contentful');
 const Item = require('../../lib/Item');
 
 jest.mock('contentful', () => {
+  // eslint-disable-next-line global-require
   const response = require('../__mocks__/response.json');
 
   return {

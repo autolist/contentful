@@ -1,52 +1,66 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
+job_defaults: &job_defaults
+  environment:
+    CC_TEST_REPORTER_ID: 00c341633f1cbff55d8edbc48a0b86512275dfb39027d6901c04171f21c22e02
+  docker:
+    # specify the version you desire here
+    - image: circleci/node:8.10
+  working_directory: ~/repo
+
+step_defaults: &step_defaults
+
 version: 2
 jobs:
   build:
-    environment:
-      CC_TEST_REPORTER_ID: 00c341633f1cbff55d8edbc48a0b86512275dfb39027d6901c04171f21c22e02
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:7.10
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
-
+    <<: *job_defaults
     steps:
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "yarn.lock" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-
       - run: yarn install
-
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - node_modules
       - run:
           name: Setup Code Climate test-reporter
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
 
-      # run tests!
-      - run:
-        - ./cc-test-reporter before-build
-        - yarn test --coverage
-        - ./cc-test-reporter after-build --coverage-input-type clover --exit-code $?
+  test:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+                  - ./cc-test-reporter before-build
+      - run: yarn test --collectCoverage=true
+      - run: ./cc-test-reporter after-build --coverage-input-type clover --exit-code $?
 
+  lint:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
       - run: yarn lint
 
-
+workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - lint:
+          requires:
+            - build

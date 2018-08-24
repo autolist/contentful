@@ -1,4 +1,6 @@
 # Contentful Client
+[![Test Coverage](https://api.codeclimate.com/v1/badges/232853287f54be2172aa/test_coverage)](https://codeclimate.com/repos/5b806b29d9fa0f16a200a9c4/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/232853287f54be2172aa/maintainability)](https://codeclimate.com/repos/5b806b29d9fa0f16a200a9c4/maintainability)
 
 ## Usage:
 

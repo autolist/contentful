@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint . --quiet --ext .json --ext .js",
     "test": "jest",
-    "prepublishOnly": "rollup -c"
+    "prepare": "rollup -c"
   },
   "dependencies": {
     "contentful": "^7.0.3",

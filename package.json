@@ -4,12 +4,11 @@
   "module": "index.js",
   "main": "dist/index.js",
   "license": "N/A",
-  "private": true,
+  "private": false,
   "scripts": {
     "lint": "eslint . --quiet --ext .json --ext .js",
     "test": "jest",
-    "build": "rollup -c",
-    "prepare": "build"
+    "prepare": "rollup -c"
   },
   "dependencies": {
     "contentful": "^7.0.3",

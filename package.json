@@ -1,13 +1,15 @@
 {
   "name": "@autolist/contentful",
   "version": "0.0.1",
+  "module": "index.js",
   "main": "dist/index.js",
   "license": "N/A",
   "private": true,
   "scripts": {
     "lint": "eslint . --quiet --ext .json --ext .js",
     "test": "jest",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "prepare": "build"
   },
   "dependencies": {
     "contentful": "^7.0.3",

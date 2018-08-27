@@ -7,7 +7,7 @@ jest.mock('contentful');
 class Article extends Item {
   static fields = ['title', 'body', 'slug'];
 
-  static relationships = ['parentPage', 'categories', 'author'];
+  static relationships = ['parentPage', 'categories', 'author', 'heroImage'];
 }
 class Page extends Item {
   static fields = ['slug'];
@@ -58,6 +58,12 @@ describe('Item', () => {
       it('returns an object with the correct relationships', async () => {
         expect(article.toJSON().parentPage).toMatchObject({
           slug: 'ford-mustang'
+        });
+      });
+
+      it('returns an object with the correct asset', async () => {
+        expect(article.toJSON().heroImage).toMatchObject({
+          title: 'Hero Image Example'
         });
       });
 

@@ -1,20 +1,8 @@
-require('contentful');
-const Item = require('../../lib/Item');
+import { createClient } from 'contentful';
+import Item from '../../lib/Item';
+import response from '../__mocks__/response.json';
 
-jest.mock('contentful', () => {
-  // eslint-disable-next-line global-require
-  const response = require('../__mocks__/response.json');
-
-  return {
-    createClient() {
-      return {
-        getEntries() {
-          return response;
-        }
-      };
-    }
-  };
-});
+jest.mock('contentful');
 
 class Article extends Item {
   static fields = ['title', 'body', 'slug'];
@@ -38,6 +26,12 @@ Item.classes.category = Category;
 Item.classes.author = Author;
 
 describe('Item', () => {
+  beforeEach(() => {
+    const mockClient = createClient();
+    mockClient.setMockResponse(response);
+    spyOn(mockClient, 'getEntries').and.callThrough();
+  });
+
   describe('static', () => {
     describe('getClass', () => {
       it('returns a class based on the content type', () => {

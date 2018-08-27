@@ -1,5 +1,5 @@
-const Item = require('../../lib/Item');
-const Params = require('../../lib/Params');
+import Item from '../../lib/Item';
+import Params from '../../lib/Params';
 
 describe('Params', () => {
   describe('toJSON', () => {
@@ -25,7 +25,6 @@ describe('Params', () => {
         'fields.vehicle2.[in]': '123,234',
         limit: undefined,
         locale: 'en-US',
-        order: '-fields.publicationDate',
         skip: undefined
       });
     });
@@ -88,6 +87,17 @@ describe('Params', () => {
 
       expect(params.toJSON()).toMatchObject({
         locale: 'en-US'
+      });
+    });
+
+    it('uses a default sort', () => {
+      class WithDefaultSort extends Params {
+        static defaultSort = '-fields.publicationDate';
+      }
+      const params = new WithDefaultSort({}, Comparison);
+
+      expect(params.toJSON()).toMatchObject({
+        order: '-fields.publicationDate'
       });
     });
   });

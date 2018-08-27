@@ -16,7 +16,7 @@ export default {
     'tty',
     'util'
   ],
-  input: 'lib/Item.js',
+  input: 'index.js',
   output: {
     file: 'dist/index.js',
     format: 'cjs'

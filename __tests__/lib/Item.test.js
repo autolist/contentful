@@ -39,25 +39,11 @@ describe('Item', () => {
       });
     });
 
-    describe('findAll', () => {
-      it('returns an array of models', async () => {
-        const articles = await Article.findAll();
-        expect(articles).toHaveLength(1);
-      });
-    });
-
-    describe('find', () => {
-      it('returns one models', async () => {
-        const article = await Article.find();
-        expect(article.constructor).toBe(Article);
-      });
-    });
-
     describe('toJSON', () => {
       let article;
 
       beforeEach(async () => {
-        article = await Article.find();
+        [article] = Article.load(response);
       });
 
       it('returns an object with the correct fields', async () => {

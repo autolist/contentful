@@ -39,6 +39,23 @@ describe('Item', () => {
       });
     });
 
+    describe('fields', () => {
+      let article;
+
+      beforeEach(async () => {
+        [article] = Article.load(response);
+      });
+
+      it('returns the localized fields', async () => {
+        expect(article.fields).toMatchObject({
+          slug: 'article-title',
+          body:
+            'The body of the content (//images.contentful.com/6tuem73u73an/1QXPHgEwraG00mugw08uSe/d198d126ba821c50ce94d7a3302ae267/TestImage1.jpeg) (//images.ctfassets.net/6tuem73u73an/1QXPHgEwraG00mugw08uSe/d198d126ba821c50ce94d7a3302ae267/TestImage2.jpeg)',
+          title: 'Article title'
+        });
+      });
+    });
+
     describe('toJSON', () => {
       let article;
 

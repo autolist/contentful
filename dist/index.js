@@ -17355,6 +17355,11 @@ function () {
       return Object.assign({}, fields, relationships);
     }
   }, {
+    key: "fields",
+    get: function get() {
+      return getWithOptionalLocale(this.data, this.locale, "fields");
+    }
+  }, {
     key: "contentType",
     get: function get() {
       return this.data.sys.contentType;

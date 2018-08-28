@@ -34,7 +34,6 @@ const params = new Params({
 
 const client = createClient(myCredentials)
 
-
 const contentfulResponse = await await client.getEntries(paramsObject.toJSON())
 
 const [article] = Article.load(contentfulResponse)

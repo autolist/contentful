@@ -77,6 +77,12 @@ describe('Params', () => {
       });
     });
 
+    it('does not include undefined params', () => {
+      const params = new Params({}, Comparison);
+
+      expect(Object.keys(params.toJSON())).toEqual(['content_type', 'locale']);
+    });
+
     it('transforms the locale param', () => {
       const params = new Params(
         {

@@ -17189,8 +17189,10 @@ var lodash = createCommonjsModule(function (module, exports) {
 });
 var lodash_1 = lodash.get;
 var lodash_2 = lodash.isArray;
-var lodash_3 = lodash.has;
+var lodash_3 = lodash.isNumber;
 var lodash_4 = lodash.isEmpty;
+var lodash_5 = lodash.omitBy;
+var lodash_6 = lodash.isUndefined;
 
 var Asset =
 /*#__PURE__*/
@@ -17302,21 +17304,35 @@ function () {
       this.relationships[name] = matches;
     }
   }, {
+    key: "hasField",
+    value: function hasField(key) {
+      return !lodash_6(this.data.fields[key]);
+    }
+  }, {
     key: "mapRelationships",
     value: function mapRelationships(items) {
       var _this3 = this;
 
-      this.constructor.relationships.forEach(function (relationShipName) {
-        if (lodash_2(_this3.data.fields[relationShipName])) {
-          var ids = _this3.data.fields[relationShipName].map(function (link) {
-            return link.sys.id;
-          });
+      this.constructor.relationships.forEach(function (relationshipName) {
+        if (!_this3.hasField(relationshipName)) {
+          console.warn("No field found for ".concat(relationshipName, ". This may either indicate an error in the model definition, or just an unpopulated field in contentful"));
+          return;
+        }
 
-          _this3.setPluralRelationship(relationShipName, ids, items);
-        } else {
-          var id = _this3.data.fields[relationShipName].sys.id;
+        try {
+          if (lodash_2(_this3.data.fields[relationshipName])) {
+            var ids = _this3.data.fields[relationshipName].map(function (link) {
+              return link.sys.id;
+            });
 
-          _this3.setSingularRelationship(relationShipName, id, items);
+            _this3.setPluralRelationship(relationshipName, ids, items);
+          } else {
+            var id = _this3.data.fields[relationshipName].sys.id;
+
+            _this3.setSingularRelationship(relationshipName, id, items);
+          }
+        } catch (e) {
+          throw new Error("Failed to set relationship ".concat(relationshipName, ", ").concat(e, ", from data ").concat(JSON.stringify(_this3.data)));
         }
       });
     }
@@ -17339,7 +17355,8 @@ function () {
         var relationship = _this4.relationships[name];
 
         if (lodash_4(relationship)) {
-          throw new Error("Relationship ".concat(name, " is empty"));
+          console.warn("Relationship ".concat(name, " is empty"));
+          return accumulator;
         }
 
         if (lodash_2(relationship)) {
@@ -17446,7 +17463,8 @@ function () {
 
         return accumulator;
       }, {});
-      return Object.assign({}, defaults, filtered);
+      var merged = Object.assign({}, defaults, filtered);
+      return lodash_5(merged, lodash_6);
     }
   }, {
     key: "locale",
@@ -17461,14 +17479,22 @@ function () {
   }, {
     key: "skip",
     get: function get$$1() {
-      if (lodash_3(this.params, 'page', 'limit')) {
-        // Contentful uses an offset/limit schema, so we need to derive an offset
-        // (skip in their language)
-        // from our page/limit combo into an offset (skip in their language)
-        return (this.params.page - 1) * this.params.limit;
+      if (lodash_6(this.params.page)) {
+        return undefined;
       }
 
-      return undefined;
+      if (!lodash_6(this.params.page) && lodash_6(this.params.limit)) {
+        throw new Error("You must specify a limit to use the page param, limit param is currently ".concat(this.params.limit));
+      }
+
+      if (!lodash_3(this.params.page) || !lodash_3(this.params.limit)) {
+        throw new Error("Both page and limit params must be numbers. Currently they are ".concat(this.params.page, " and ").concat(this.params.limit, "\n        "));
+      } // Contentful uses an offset/limit schema, so we need to derive an offset
+      // (skip in their language)
+      // from our page/limit combo into an offset (skip in their language)
+
+
+      return (this.params.page - 1) * this.params.limit;
     }
   }]);
 

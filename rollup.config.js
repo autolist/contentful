@@ -28,7 +28,14 @@ export default {
     }),
     commonjs({
       namedExports: {
-        'node_modules/lodash/lodash.js': ['get', 'isArray', 'has', 'isEmpty']
+        'node_modules/lodash/lodash.js': [
+          'get',
+          'isArray',
+          'isNumber',
+          'isEmpty',
+          'omitBy',
+          'isUndefined'
+        ]
       }
     }),
     json()

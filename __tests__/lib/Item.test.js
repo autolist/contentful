@@ -1,8 +1,5 @@
-import { createClient } from 'contentful';
 import Item from '../../lib/Item';
 import response from '../__mocks__/response.json';
-
-jest.mock('contentful');
 
 class Article extends Item {
   static fields = ['title', 'body', 'slug'];
@@ -26,12 +23,6 @@ Item.classes.category = Category;
 Item.classes.author = Author;
 
 describe('Item', () => {
-  beforeEach(() => {
-    const mockClient = createClient();
-    mockClient.setMockResponse(response);
-    spyOn(mockClient, 'getEntries').and.callThrough();
-  });
-
   describe('static', () => {
     describe('getClass', () => {
       it('returns a class based on the content type', () => {

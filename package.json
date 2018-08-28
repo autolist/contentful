@@ -2,13 +2,28 @@
   "name": "@autolist/contentful",
   "version": "0.0.1",
   "module": "index.js",
+  "jsnext:main": "index.js",
   "main": "dist/index.js",
-  "license": "N/A",
+  "license": "MIT",
   "private": false,
+  "description": "An ORM layer for Contentful",
+  "homepage": "https://github.com/autolist/contentful",
+  "author": "Autolist Inc. <help@autolist.com>",
+  "keywords": [
+    "orm",
+    "contentful"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/autolist/contentful.git"
+  },
   "scripts": {
     "lint": "eslint . --quiet --ext .json --ext .js",
     "test": "jest",
-    "prepare": "rollup -c"
+    "build": "rollup -c"
+  },
+  "engines": {
+    "node": ">=8.1.0"
   },
   "dependencies": {
     "lodash": "^4.17.10"

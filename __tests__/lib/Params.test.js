@@ -3,13 +3,14 @@ import Params from '../../lib/Params';
 
 describe('Params', () => {
   describe('toJSON', () => {
-    class Comparison extends Item {
+    class Comparison extends Item {}
+    Comparison.contentType = 'comparison';
+    class ExampleParams extends Params {
       static fields = ['slug'];
     }
-    Comparison.contentType = 'comparison';
 
     it('returns a contentful-compatible query object', () => {
-      const params = new Params(
+      const params = new ExampleParams(
         {
           slug: '2015-honda',
           'fields.vehicle1.[in]': '123,234',
@@ -51,7 +52,7 @@ describe('Params', () => {
     });
 
     it('transform a field param', () => {
-      const params = new Params(
+      const params = new ExampleParams(
         {
           slug: '2015-honda'
         },

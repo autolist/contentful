@@ -1,21 +1,11 @@
 import Item from '../../lib/Item';
 import response from '../__mocks__/response.json';
 
-class Article extends Item {
-  static fields = ['title', 'body', 'slug'];
+class Article extends Item {}
+class Page extends Item {}
+class Category extends Item {}
 
-  static relationships = ['parentPage', 'categories', 'author', 'heroImage'];
-}
-class Page extends Item {
-  static fields = ['slug'];
-}
-class Category extends Item {
-  static fields = ['name'];
-}
-
-class Author extends Item {
-  static fields = ['name'];
-}
+class Author extends Item {}
 
 Item.classes.article = Article;
 Item.classes.page = Page;

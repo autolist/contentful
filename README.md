@@ -9,16 +9,19 @@ import { Item, Params } from '@autolist/contentful`
 import { createClient } from 'contentful'
 
 class Article extends Item {
-  // These names must be identical to the field names in contentful
-  static fields = ['title', 'slug']
-  static relationships = ['author']
 }
 
-// You must register all classes with the parent class,
-// So that we can look them up later for association parsing
+// You must register all classes with the parent class if you
+// want to override behavior fopr specific content types,
+// so that we can look them up later for association parsing.
+// Otherwise, the default Item class will be used.
 Item.classes['article'] = Article
 
-const params = new Params({
+class ArticleParams extends Params {
+  static fields = ['slug']
+}
+
+const params = new ArticleParams({
   // Fields will be inferred and translated to contentful params
   slug: 'our-slug',
   // Skip is inferred from a combination of page and limit
@@ -34,7 +37,7 @@ const params = new Params({
 
 const client = createClient(myCredentials)
 
-const contentfulResponse = await await client.getEntries(paramsObject.toJSON())
+const contentfulResponse = await client.getEntries(paramsObject.toJSON())
 
 const [article] = Article.load(contentfulResponse)
 

@@ -2,6 +2,18 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/232853287f54be2172aa/test_coverage)](https://codeclimate.com/repos/5b806b29d9fa0f16a200a9c4/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/232853287f54be2172aa/maintainability)](https://codeclimate.com/repos/5b806b29d9fa0f16a200a9c4/maintainability)
 
+## Installation
+
+Using npm:
+```shell
+$ npm i --save @autolist/contentful
+```
+
+Using yarn:
+```shell
+$ yarn add @autolist/contentful
+```
+
 ## Usage:
 
 ```
@@ -43,3 +55,29 @@ const [article] = Article.load(contentfulResponse)
 
 console.log(article.toJSON())
 ```
+
+## :hammer_and_wrench: Development
+
+Install dependencies:
+
+```sh
+yarn
+```
+
+## :robot: Testing
+
+#### yarn:
+```sh
+yarn test
+```
+
+## Building
+
+#### yarn:
+```sh
+yarn build
+```
+
+## Releasing
+1. Bump version in `package.json`
+1. `npm publish` (Use npm and 2FA to publish until https://github.com/yarnpkg/yarn/issues/4904 is resolved)

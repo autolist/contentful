@@ -34,7 +34,8 @@ export default {
           'isNumber',
           'isEmpty',
           'omitBy',
-          'isUndefined'
+          'isUndefined',
+          'pickBy'
         ]
       }
     }),

@@ -18,6 +18,10 @@ describe('Item', () => {
       it('returns a class based on the content type', () => {
         expect(Item.getClass('article')).toBe(Article);
       });
+
+      it('returns the Item by default without a defined match', () => {
+        expect(Item.getClass('foo')).toBe(Item);
+      });
     });
 
     describe('fields', () => {
@@ -34,6 +38,43 @@ describe('Item', () => {
             'The body of the content (//images.contentful.com/6tuem73u73an/1QXPHgEwraG00mugw08uSe/d198d126ba821c50ce94d7a3302ae267/TestImage1.jpeg) (//images.ctfassets.net/6tuem73u73an/1QXPHgEwraG00mugw08uSe/d198d126ba821c50ce94d7a3302ae267/TestImage2.jpeg)',
           title: 'Article title'
         });
+      });
+    });
+
+    describe('relationshipToJSON', () => {
+      let article;
+
+      beforeEach(async () => {
+        [article] = Article.load(response);
+      });
+
+      it('returns undefined for a field not in the payload', async () => {
+        expect(article.relationshipToJSON('foo')).toBe(undefined);
+      });
+    });
+
+    describe('hasField', () => {
+      let article;
+
+      beforeEach(async () => {
+        [article] = Article.load(response);
+      });
+
+      it('checks if a key is in the fields', async () => {
+        expect(article.hasField('slug')).toBe(true);
+        expect(article.hasField('foo')).toBe(false);
+      });
+    });
+
+    describe('contentType', () => {
+      let article;
+
+      beforeEach(async () => {
+        [article] = Article.load(response);
+      });
+
+      it('returns the content type from the response', async () => {
+        expect(article.contentType).toBe('article');
       });
     });
 

@@ -38,6 +38,30 @@ describe('Params', () => {
       });
     });
 
+    it('casts string values for page and limit to numbers', () => {
+      const params = new Params(
+        {
+          page: '1',
+          limit: '3'
+        },
+        Comparison
+      );
+
+      expect(params.toJSON()).toMatchObject({
+        skip: 0,
+        limit: 3
+      });
+    });
+
+    it('does not include unspecified params', () => {
+      const params = new Params({}, Comparison);
+
+      expect(params.toJSON()).toEqual({
+        content_type: 'comparison',
+        locale: 'en-US'
+      });
+    });
+
     it('leaves untouched an unkown param', () => {
       const params = new Params(
         {

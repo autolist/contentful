@@ -1,0 +1,228 @@
+{
+  "sys": {
+    "type": "Array"
+  },
+  "total": 1,
+  "skip": 0,
+  "limit": 100,
+  "items": [{
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "6tuem73u73an"
+        }
+      },
+      "id": "1Lc6Z3TJ4kMYmwMemsu6Cs",
+      "type": "Entry",
+      "createdAt": "2017-12-07T21:16:41.189Z",
+      "updatedAt": "2017-12-07T21:16:41.189Z",
+      "revision": 1,
+      "contentType": {
+        "sys": {
+          "type": "Link",
+          "linkType": "ContentType",
+          "id": "article"
+        }
+      },
+      "locale": "en-US"
+    },
+    "fields": {
+      "title": "Article title",
+      "author": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Entry",
+          "id": "3wNHo4lB7qOMgWyaOCK4C4"
+        }
+      },
+      "publicationDate": "2017-12-07T07:00-08:00",
+      "contentSummary": "Content summary",
+      "heroImage": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Asset",
+          "id": "2B1vKpr1N62AaqK248oCs8"
+        }
+      },
+      "thumbImage": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Asset",
+          "id": "1nm86JeV2kEa86UUaIEcWm"
+        }
+      },
+      "body": "The body of the content (//images.contentful.com/6tuem73u73an/1QXPHgEwraG00mugw08uSe/d198d126ba821c50ce94d7a3302ae267/TestImage1.jpeg) (//images.ctfassets.net/6tuem73u73an/1QXPHgEwraG00mugw08uSe/d198d126ba821c50ce94d7a3302ae267/TestImage2.jpeg)",
+      "parentPage": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Entry",
+          "id": "1r8sBYA0mcYcisuIIQAyaM"
+        }
+      },
+      "slug": "article-title",
+      "categories": [{
+        "sys": {
+          "type": "Link",
+          "linkType": "Entry",
+          "id": "27aCQsanUkumUkWGga40c6"
+        }
+      }],
+      "staging": true,
+      "production": true,
+      "indexed": true
+    }
+  }],
+  "includes": {
+    "Entry": [{
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "6tuem73u73an"
+          }
+        },
+        "id": "1r8sBYA0mcYcisuIIQAyaM",
+        "type": "Entry",
+        "createdAt": "2017-12-07T21:16:41.111Z",
+        "updatedAt": "2017-12-07T21:16:41.111Z",
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "page"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "name": "Ford Mustang Page",
+        "description": "Page about Ford Mustangs",
+        "slug": "ford-mustang"
+      }
+    }, {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "6tuem73u73an"
+          }
+        },
+        "id": "27aCQsanUkumUkWGga40c6",
+        "type": "Entry",
+        "createdAt": "2017-12-07T21:16:41.179Z",
+        "updatedAt": "2017-12-07T21:16:41.179Z",
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "category"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "name": "News & Analysis",
+        "description": "Autos News & Analysis"
+      }
+    }, {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "6tuem73u73an"
+          }
+        },
+        "id": "3wNHo4lB7qOMgWyaOCK4C4",
+        "type": "Entry",
+        "createdAt": "2017-12-07T21:16:41.105Z",
+        "updatedAt": "2017-12-07T21:16:41.105Z",
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "author"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "name": "Ben Kempner",
+        "title": "Chief Word Guy",
+        "email": "ben@autolist.com"
+      }
+    }],
+    "Asset": [{
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "6tuem73u73an"
+          }
+        },
+        "id": "1nm86JeV2kEa86UUaIEcWm",
+        "type": "Asset",
+        "createdAt": "2017-12-08T00:28:49.658Z",
+        "updatedAt": "2017-12-08T00:28:49.658Z",
+        "revision": 1,
+        "locale": "en-US"
+      },
+      "fields": {
+        "title": "Thumb image title English",
+        "description": "Thumb image description English",
+        "file": {
+          "url": "//images.ctfassets.net/6tuem73u73an/1nm86JeV2kEa86UUaIEcWm/18e4485592d89cda2cad1f60fde29f7d/thumb-image-example.jpg",
+          "details": {
+            "size": 66313,
+            "image": {
+              "width": 720,
+              "height": 720
+            }
+          },
+          "fileName": "thumb-image-example.jpg",
+          "contentType": "image/jpeg"
+        }
+      }
+    }, {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "6tuem73u73an"
+          }
+        },
+        "id": "2B1vKpr1N62AaqK248oCs8",
+        "type": "Asset",
+        "createdAt": "2017-12-08T00:28:49.671Z",
+        "updatedAt": "2017-12-08T00:28:49.671Z",
+        "revision": 1,
+        "locale": "en-US"
+      },
+      "fields": {
+        "title": "Hero Image Example",
+        "description": "Description example in English",
+        "file": {
+          "url": "//images.contentful.com/6tuem73u73an/2B1vKpr1N62AaqK248oCs8/8d4ac9bf8897d0700880b4f3acfe9f28/hero_image_example.png",
+          "details": {
+            "size": 14969,
+            "image": {
+              "width": 1140,
+              "height": 107
+            }
+          },
+          "fileName": "hero_image_example.png",
+          "contentType": "image/png"
+        }
+      }
+    }]
+  }
+}

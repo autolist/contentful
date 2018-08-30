@@ -24,7 +24,7 @@ class Article extends Item {
 }
 
 // You must register all classes with the parent class if you
-// want to override behavior fopr specific content types,
+// want to override behavior for specific content types,
 // so that we can look them up later for association parsing.
 // Otherwise, the default Item class will be used.
 Item.classes['article'] = Article

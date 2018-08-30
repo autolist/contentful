@@ -31,7 +31,9 @@ export default {
         'node_modules/lodash/lodash.js': [
           'get',
           'isArray',
-          'isNumber',
+          'isFinite',
+          'toNumber',
+          'isObject',
           'isEmpty',
           'omitBy',
           'isUndefined',

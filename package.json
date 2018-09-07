@@ -1,6 +1,6 @@
 {
   "name": "@autolist/contentful",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "module": "index.js",
   "jsnext:main": "index.js",
   "main": "dist/index.js",

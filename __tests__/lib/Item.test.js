@@ -25,6 +25,21 @@ describe('Item', () => {
       });
     });
 
+    describe('find', () => {
+      it('retrieves and parses from an id', async () => {
+        const getEntries = jest.fn().mockImplementation(() => response);
+
+        Article.client = async function() {
+          return {
+            getEntries
+          };
+        };
+        const article = await Article.find('1Lc6Z3TJ4kMYmwMemsu6Cs');
+
+        expect(article.fields.slug).toBe('article-title');
+      });
+    });
+
     describe('load', () => {
       it('handles an empty response', () => {
         const result = Item.load(emptyResponse);

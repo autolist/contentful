@@ -102,6 +102,19 @@ describe('Params', () => {
       });
     });
 
+    it('transforms the id param', () => {
+      const params = new Params(
+        {
+          id: 10
+        },
+        Comparison
+      );
+
+      expect(params.toJSON()).toMatchObject({
+        'sys.id': 10
+      });
+    });
+
     it('does not include undefined params', () => {
       const params = new Params({}, Comparison);
 

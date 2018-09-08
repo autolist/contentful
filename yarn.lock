@@ -4157,8 +4157,8 @@ rollup-copy-plugin@^0.1.0:
   resolved "https://registry.yarnpkg.com/rollup-copy-plugin/-/rollup-copy-plugin-0.1.0.tgz#54017500046f5540175e16aa8f92994c9652883d"
 
 rollup-plugin-babel@^4.0.0-beta.8:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-babel/-/rollup-plugin-babel-4.0.2.tgz#c073eeb0cc246324e6f6feaedbb90093841a138c"
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-babel/-/rollup-plugin-babel-4.0.3.tgz#8282b0e22233160d679e9c7631342e848422fb02"
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
     rollup-pluginutils "^2.3.0"

@@ -5,13 +5,19 @@
   ],
   "presets": [
     ["@babel/preset-env", {
-      "modules": false
+      "modules": false,
+      "targets": {
+        "node": "8.10"
+      }
     }]
   ],
   "env": {
     "test": {
       "presets": [
         ["@babel/preset-env", {
+          "targets": {
+            "node": "8.10"
+          },
           "modules": "commonjs"
         }]
       ]

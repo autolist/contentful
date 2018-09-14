@@ -28,6 +28,9 @@
   "dependencies": {
     "lodash": "^4.17.10"
   },
+  "resolutions": {
+    "babel-core": "^7.0.0-0"
+  },
   "devDependencies": {
     "@autolist/eslint-config-autolist": "^0.8.0",
     "@babel/core": "^7.0.0-rc.4",

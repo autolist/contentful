@@ -51,6 +51,7 @@ describe('Params', () => {
         skip: 0,
         limit: 3
       });
+      expect(params.toJSON()).not.toHaveProperty('page');
     });
 
     it('does not include unspecified params', () => {
@@ -86,6 +87,7 @@ describe('Params', () => {
       expect(params.toJSON()).toMatchObject({
         'fields.slug': '2015-honda'
       });
+      expect(params.toJSON()).not.toHaveProperty('slug');
     });
 
     it('transforms the page param', () => {
@@ -100,6 +102,8 @@ describe('Params', () => {
       expect(params.toJSON()).toMatchObject({
         skip: 10
       });
+
+      expect(params.toJSON()).not.toHaveProperty('page');
     });
 
     it('transforms the id param', () => {
@@ -113,6 +117,7 @@ describe('Params', () => {
       expect(params.toJSON()).toMatchObject({
         'sys.id': 10
       });
+      expect(params.toJSON()).not.toHaveProperty('id');
     });
 
     it('does not include undefined params', () => {

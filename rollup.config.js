@@ -38,11 +38,6 @@ export default {
           'omitBy',
           'isUndefined',
           'pickBy'
-        ],
-        'node_modules/winston/lib/winston.js': [
-          'createLogger',
-          'format',
-          'transports'
         ]
       }
     }),

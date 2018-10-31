@@ -23,7 +23,7 @@
     "build": "rollup -c"
   },
   "engines": {
-    "node": ">=8.1.0"
+    "node": ">=8.10.0"
   },
   "dependencies": {
     "lodash": "^4.17.10"

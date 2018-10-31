@@ -30,6 +30,7 @@
     },
     "fields": {
       "title": "Article title",
+      "tags": ["foo", "bar"],
       "author": {
         "sys": {
           "type": "Link",

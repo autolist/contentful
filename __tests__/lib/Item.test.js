@@ -49,6 +49,20 @@ describe('Item', () => {
     });
   });
 
+  describe('relationships', () => {
+    let article;
+
+    describe('with a not found relationship', () => {
+      beforeEach(async () => {
+        [article] = await Article.load(response);
+      });
+
+      it('is undefined', () => {
+        expect(article.relationships.thumbImage).toBe(undefined);
+      });
+    });
+  });
+
   describe('fields', () => {
     let article;
 

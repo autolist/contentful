@@ -1,5 +1,6 @@
 import Item from '../../lib/Item';
 import response from '../__mocks__/response.json';
+import responseWithoutCategory from '../__mocks__/response-without-category.json';
 import emptyResponse from '../__mocks__/empty-response.json';
 
 class Article extends Item {}
@@ -45,6 +46,31 @@ describe('Item', () => {
         const result = Item.load(emptyResponse);
 
         expect(result).toEqual([]);
+      });
+    });
+  });
+
+  describe('relationships', () => {
+    let article;
+
+    describe('with a not found relationship', () => {
+      describe('singular relationship', () => {
+        beforeEach(async () => {
+          [article] = await Article.load(response);
+        });
+
+        it('is undefined', () => {
+          expect(article.relationships.thumbImage).toBe(undefined);
+        });
+      });
+
+      describe('plural relationship', () => {
+        beforeEach(async () => {
+          [article] = await Article.load(responseWithoutCategory);
+        });
+        it('is undefined', () => {
+          expect(article.relationships.categories).toEqual([]);
+        });
       });
     });
   });

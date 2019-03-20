@@ -135,7 +135,42 @@
         },
         "fields": {
           "name": "News & Analysis",
-          "description": "Autos News & Analysis"
+          "description": "Autos News & Analysis",
+          "parentCategory": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "11aCQsanUkumUkWGga40c6"
+            }
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "6tuem73u73an"
+            }
+          },
+          "id": "11aCQsanUkumUkWGga40c6",
+          "type": "Entry",
+          "createdAt": "2017-12-07T21:16:41.179Z",
+          "updatedAt": "2017-12-07T21:16:41.179Z",
+          "revision": 1,
+          "contentType": {
+            "sys": {
+              "type": "Link",
+              "linkType": "ContentType",
+              "id": "category"
+            }
+          },
+          "locale": "en-US"
+        },
+        "fields": {
+          "name": "News Parent Page",
+          "description": "News Parent Page"
         }
       },
       {

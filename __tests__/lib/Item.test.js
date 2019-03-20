@@ -79,7 +79,7 @@ describe('Item', () => {
         [article] = await Article.load(response);
       });
 
-      fit('returns the nested relationship', () => {
+      it('returns the nested relationship', () => {
         expect(
           article.relationships.categories[0].relationships.parentCategory
         ).toBeTruthy();

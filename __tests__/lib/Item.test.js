@@ -73,6 +73,18 @@ describe('Item', () => {
         });
       });
     });
+
+    describe('nested relationship', () => {
+      beforeEach(async () => {
+        [article] = await Article.load(response);
+      });
+
+      fit('returns the nested relationship', () => {
+        expect(
+          article.relationships.categories[0].relationships.parentCategory
+        ).toBeTruthy();
+      });
+    });
   });
 
   describe('fields', () => {

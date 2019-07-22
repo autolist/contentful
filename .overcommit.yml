@@ -1,0 +1,29 @@
+CommitMsg:
+  MessageFormat:
+    enabled: true
+    on_fail: warn
+    description: 'Check commit message matches expected pattern'
+    pattern: '[A-Za-z][a-z]+:.+(\n\n[\s\S]*)?\n\n\s*\[#[0-9]+\]'
+    expected_pattern_message: |
+      <commit type>: <commit summary>
+      <optional commit detail>
+      [#<tracker story id>]
+    sample_message: |
+      Feat: add ability for people to sell cars
+      This supercedes the existing behavior that allowed
+      people to buy cars because that functionality is
+      now deprecated.
+      [#1123456]
+
+PreCommit:
+  AuthorName:
+    enabled: false
+  YarnEsLint:
+    enabled: true
+    command: ["yarn", "lint"]
+
+PrePush:
+  YarnRunTests:
+    enabled: true
+    command: ["yarn", "jest", "."]
+

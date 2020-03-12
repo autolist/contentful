@@ -4,14 +4,16 @@
 
 ## Installation
 
+:exclamation: *IMPORTANT: This package uses the `install` lifecycle hook to generate `dist/index.js`. If `dist` is in the .gitignore chain, then yarn will delete it that folder after running the lifecycle hooks.*
+
 Using npm:
 ```shell
-$ npm i --save @autolist/contentful
+$ npm i --save autolist/contentful#master
 ```
 
 Using yarn:
 ```shell
-$ yarn add @autolist/contentful
+$ yarn add autolist/contentful#master
 ```
 
 ## Usage:
@@ -80,4 +82,3 @@ yarn build
 
 ## Releasing
 1. Bump version in `package.json`
-1. `npm publish` (Use npm and 2FA to publish until https://github.com/yarnpkg/yarn/issues/4904 is resolved)

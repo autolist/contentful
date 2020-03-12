@@ -3,7 +3,7 @@ job_defaults: &job_defaults
     CC_TEST_REPORTER_ID: 00c341633f1cbff55d8edbc48a0b86512275dfb39027d6901c04171f21c22e02
   docker:
     # specify the version you desire here
-    - image: circleci/node:8.10
+    - image: circleci/node:10.19
   working_directory: ~/repo
 
 step_defaults: &step_defaults

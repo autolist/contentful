@@ -20,8 +20,7 @@
   "scripts": {
     "lint": "eslint . --quiet --ext .json --ext .js",
     "test": "jest",
-    "build": "rollup -c",
-    "prepare": "yarn build"
+    "build": "rollup -c"
   },
   "engines": {
     "node": ">=8.10.0"

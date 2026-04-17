@@ -1,14 +1,14 @@
+orbs:
+  qlty-orb: qltysh/qlty-orb@0.1.1
+
 job_defaults: &job_defaults
-  environment:
-    CC_TEST_REPORTER_ID: 00c341633f1cbff55d8edbc48a0b86512275dfb39027d6901c04171f21c22e02
   docker:
-    # specify the version you desire here
-    - image: circleci/node:8.10
+    - image: cimg/node:18.20
   working_directory: ~/repo
 
 step_defaults: &step_defaults
 
-version: 2
+version: 2.1
 jobs:
   build:
     <<: *job_defaults
@@ -36,14 +36,15 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/repo
-      - run:
-          name: Setup Code Climate test-reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-      - run: ./cc-test-reporter before-build
       - run: yarn test --collectCoverage=true
-      - run: ./cc-test-reporter after-build --exit-code $?
+      - qlty-orb/coverage_publish:
+          files: "coverage/lcov.info"
+
+  qlty_coverage_complete:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - qlty-orb/coverage_complete
 
   lint:
     <<: *job_defaults
@@ -64,3 +65,6 @@ workflows:
       - lint:
           requires:
             - build
+      - qlty_coverage_complete:
+          requires:
+            - test
